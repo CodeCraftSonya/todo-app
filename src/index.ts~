@@ -1,6 +1,6 @@
 import "./styles/styles.css";
 import { todos } from "./utils/constants";
-import { Item } from "./components/item";
+import { Item } from "./components/Item";
 
 const contentElement = document.querySelector(".todos__list");
 
