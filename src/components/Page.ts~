@@ -1,0 +1,27 @@
+export interface IPage {
+    formConteiner: HTMLElement;
+    todoConteiner: HTMLElement[];
+}
+
+export class Page implements IPage {
+    _formConteiner: HTMLElement;
+    _todoConteiner: HTMLElement;
+
+    constructor(protected container: HTMLElement) {
+        this._formConteiner = this.container.querySelector(".todo-form-container");
+        this._todoConteiner = this.container.querySelector(".todos__list");
+    }
+
+    set todoConteiner(items: HTMLElement[]) {
+        this._todoConteiner.replaceChildren(...items);
+    }
+
+    set formConteiner(formElement: HTMLFormElement | null) {
+        if (formElement) {
+            this._formConteiner.replaceChildren(formElement);
+        } else {
+            this._formConteiner.innerHTML = '';
+        }
+    }
+}
+
