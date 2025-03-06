@@ -1,5 +1,5 @@
 import { IToDoModel } from "../types";
-import { IViewItemConstructor } from "./item";
+import { IViewItem, IViewItemConstructor } from "./item";
 import { IForm, IFormConstructor } from "./Form";
 import { IPage } from "./Page";
 
@@ -13,7 +13,7 @@ export class ItemPresenter {
     protected model: IToDoModel,
     protected formConstructor: IFormConstructor,
     protected viewPageConteiner: IPage,
-    protected viewItemConstructor: IViewItemConstructor,
+    protected viewItemConstructor: IViewItemConstructor
   ) {
     this.itemTemplate = document.querySelector(
       "#todo-item-template"
@@ -33,6 +33,11 @@ export class ItemPresenter {
     this.model.addItem(data);
     this.renderView();
     this.todoForm.clearValue();
+  }
+  handleCopyItem(item: IViewItem) {
+    const copiedItem = this.model.getItem(item.id);
+    this.model.addItem(copiedItem.name);
+    this.renderView();
   }
 
   renderView() {

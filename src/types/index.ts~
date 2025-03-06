@@ -5,6 +5,6 @@ export interface IItem {
 
 export interface IToDoModel {
   items: IItem[];
-  addItem: (item: IItem) => IItem;
+  addItem: (data: string) => IItem;
   removeItem: (id: string) => void;
 }
